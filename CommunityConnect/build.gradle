@@ -1,0 +1,57 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.10'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'ecc.project'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-groovy-templates'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+	implementation 'com.amazonaws:aws-java-sdk:1.12.454'
+	implementation 'com.coveo:spring-boot-parameter-store-integration:1.5.0'
+
+
+
+	//Java Version 2.x AWS SDKs
+	implementation 'software.amazon.awssdk:sqs:2.20.51' //sqs
+	implementation 'software.amazon.awssdk:s3:2.20.51' //s3
+	implementation 'software.amazon.awssdk:cloudwatchlogs:2.20.26' //cloudwatchlogs
+
+
+//	implementation 'com.amazonaws:aws-java-sdk-cloudwatch:1.12.245'
+//	implementation 'com.amazonaws:aws-java-sdk-logs:1.12.245'
+//	implementation 'software.amazon.awssdk:sqs:2.20.51'
+//	implementation 'com.amazonaws:aws-java-sdk-cloudwatchlogs:1.11.986'
+//	implementation 'software.amazon.awssdk:logs:2.17.11'
+
+
+
+
+
+
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
